@@ -1,0 +1,42 @@
+﻿@model Zadanie.Models.FormModel
+@{
+    ViewData["Title"] = "Form-Created";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Dane z formularza</h1>
+    @Html.DisplayNameFor(model => model.Name):          @Html.DisplayFor(model => model.Name)
+    <br />
+    @Html.DisplayNameFor(model => model.Date):   @Html.DisplayFor(model => model.Date)
+    <br />
+    <br />
+    <br />
+
+    <script>
+
+        var y= @Model.Date.Year;
+        var m= @Model.Date.Month;
+        var d= @Model.Date.Day;
+
+        m=m-1;
+        
+        var bd = new Date(y,m,d);
+        var bdate = bd.getFullYear()+'-'+(bd.getMonth())+'-'+bd.getDate();  
+
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();   
+        
+        var dni = today - bd;
+        dni = Math.floor(dni/(1000*60*60*24));
+
+        document.write(" Od urodzin minęło: "+dni+" dni<br>");
+        if(y%4==0)
+            document.write("Rok urodzenia "+y+" był rokiem przestępnym");
+        else
+            document.write("Rok urodzenia "+y+" nie był rokiem przestępnym");
+    </script>
+ 
+
+
+</div>
+
